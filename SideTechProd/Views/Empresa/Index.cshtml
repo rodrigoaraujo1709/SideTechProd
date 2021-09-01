@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SideTechProd.Models.Empresa>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Gerenciar empresas</h1>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RazaoSocial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeFantasia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cnpj)
+            </th>
+            <th>
+                <a asp-action="Create" class="btn btn-outline-success"><i class="far fa-plus-square"></i> Nova empresa</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RazaoSocial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeFantasia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cnpj)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EmpresaId"><i class="fa fa-marker fa-lg"></i> Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.EmpresaId"><i class="fa fa-id-card-o fa-lg" aria-hidden="true"></i> Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.EmpresaId" class="text-danger" ml-1><i class="fa fa-trash-alt fa-lg"></i> Deletar</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+@Html.ActionLink("Voltar", "Index", "Home")
